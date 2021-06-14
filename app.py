@@ -2,13 +2,8 @@ import pywhatkit as kit
 
 texto = input('Introduzca el texto: ')
 
+st = input('Introduzca el titulo imagen: ' ) + '.png'
+
 color = input('Introduzca los colores en formato R,G,B: ')
 
-st = input('Introduzca el titulo imagen: ')
-
-titulo = st + '.png'
-
-#kit.text_to_handwriting(texto,titulo + formato,list = (255,0,0))
-
-
-kit.text_to_handwriting(texto,titulo)
+kit.text_to_handwriting(texto,st)
