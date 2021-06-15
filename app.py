@@ -1,36 +1,34 @@
 import pywhatkit as kit
 
-print("\033[1;32;40m Bright Green  \n")
-
-print("\033[0;31;40m Normal text\n")
-
 texto = input('Introduzca el texto: ')
 
-st = input('Introduzca el titulo imagen: ' ) + '.png'
+st = input('\nIntroduzca el titulo imagen: ' ) + '.png'
+
+def colores():
+    numero = -1
+    while numero < 0:
+        try:
+            numero = int(input())
+        except:
+            print('El rango es 0-255')
+            pass
+    return numero
 
 print('\nA continuacion, puede elegir los colores siguiendo el formato RGB')
 
-print('\033[0;31;40m Color rojo:\n')
-colorR = input('\033[0;31;40mColor rojo: ')
+print('\nColor rojo(0-255): ', end="")
 
-colorG = input('\nColor verde: ')
+colorR = colores()
 
-colorB = input('\nColor azul: ')
+print('Color verde(0-255): ', end="")
 
-#Default color is blue
+colorG = colores()
 
-def colorDefault():
-    colorR = 0
-    colorG = 0
-    colorB = 255
-    print('leche')
+print('\nColor azul(0-255): ', end="")
 
-if(colorR.isnumeric or colorG.isnumeric or colorB.isnumeric == False): 
-    colorDefault
+colorB = colores()
 
-if(0 <= (colorR or colorG or colorB) <= 255):
-    colorR = 0
-    colorG = 0
-    colorB = 255
-
-kit.text_to_handwriting(texto,st,[colorR, colorG, colorB,])
+try:
+    kit.text_to_handwriting(texto,st,[colorR, colorG, colorB,])
+except:
+    print('Error al crear la imagen')
